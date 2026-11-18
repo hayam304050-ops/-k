@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فوانيس الإتقان: رحلة متشابهات سورة النساء</title>
+  <!-- استيراد خطوط عربية جميلة للواجهات وللآيات القرآنية -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- مكتبة Tailwind CSS للتنسيق المتجاوب -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            quran: ['Amiri', 'serif'],
+          },
+          colors: {
+            royal: {
+              950: '#091426',
+              900: '#0e1f3d',
+              800: '#162e58',
+              700: '#1f407a',
+            },
+            gold: {
+              300: '#fde68a',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: radial-gradient(circle at top, #183668 0%, #0b182e 55%, #060d1a 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .quran-text {
+      font-family: 'Amiri', serif;
+      line-height: 1.95;
+    }
+
+    /* حركة تأرجح الفوانيس المعلقة */
+    @keyframes lanternSway {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+    }
+    .lantern-sway {
+      transform-origin: top center;
+      animation: lanternSway 4.2s ease-in-out infinite;
+    }
+    .lantern-sway-delayed {
+      transform-origin: top center;
+      animation: lanternSway 4.8s ease-in-out 1.2s infinite;
+    }
+
+    /* توهج الفانوس المضيء */
+    @keyframes lanternGlow {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.55)); }
+      50% { filter: drop-shadow(0 0 22px rgba(251, 191, 36, 0.95)); }
+    }
+    .lantern-lit {
+      animation: lanternGlow 2.4s ease-in-out infinite;
+    }
+
+    /* حركة اهتزاز واضحة عند الإجابة الخاطئة */
+    @keyframes errorShake {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-10px); }
+      30% { transform: translateX(10px); }
+      45% { transform: translateX(-8px); }
+      60% { transform: translateX(8px); }
+      75% { transform: translateX(-4px); }
+      90% { transform: translateX(4px); }
+    }
+    .animate-shake {
+      animation: errorShake 0.55s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    /* حركة نبض الجائزة */
+    @keyframes prizePop {
+      0% { transform: scale(0.4) rotate(-10deg); opacity: 0; }
+      70% { transform: scale(1.08) rotate(3deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .animate-prize {
+      animation: prizePop 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* خلفية نجوم إسلامية ناعمة */
+    .islamic-pattern {
+      background-image: radial-gradient(rgba(251, 191, 36, 0.12) 1px, transparent 1px),
+                        radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+    }
+
+    /* شريط تمرير مخصص */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #091426; }
+    ::-webkit-scrollbar-thumb { background: #264882; border-radius: 9999px; }
+  </style>
+</head>
+<body class="islamic-pattern relative selection:bg-amber-400 selection:text-slate-900">
+
+  <!-- كانفاس الاحتفال بالقصاصات الذهبية عند الفوز -->
+  <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- الفوانيس الزخرفية العلوية المستوحاة من صفحات دليل المتقنين -->
+  <div class="fixed top-0 left-4 sm:left-10 pointer-events-none z-10 opacity-90">
+    <svg class="w-14 h-28 sm:w-20 sm:h-36 lantern-sway lantern-lit" viewBox="0 0 100 180" fill="none">
+      <line x1="50" y1="0" x2="50" y2="32" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="50" cy="36" r="5" stroke="#FBBF24" stroke-width="2.5"/>
+      <path d="M30 55 L50 38 L70 55 Z" fill="#D97706" stroke="#FDE68A" stroke-width="2"/>
+      <rect x="26" y="55" width="48" height="72" rx="12" fill="url(#lanternGrad1)" stroke="#FBBF24" stroke-width="3"/>
+      <path d="M38 65 Q50 55 62 65 L62 117 Q50 124 38 117 Z" fill="#FEF3C7" opacity="0.85"/>
+      <path d="M26 127 L74 127 L62 145 L38 145 Z" fill="#B45309" stroke="#FBBF24" stroke-width="2"/>
+      <circle cx="50" cy="153" r="5" fill="#FBBF24"/>
+      <defs>
+        <linearGradient id="lanternGrad1" x1="50" y1="55" x2="50" y2="127" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#EC4899"/>
+          <stop offset="0.5" stop-color="#F59E0B"/>
+          <stop offset="1" stop-color="#FDE047"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="fixed top-0 right-4 sm:right-10 pointer-events-none z-10 opacity-90">
+    <svg class="w-14 h-28 sm:w-20 sm:h-36 lantern-sway-delayed lantern-lit" viewBox="0 0 100 180" fill="none">
+      <line x1="50" y1="0" x2="50" y2="28" stroke="#FBBF24" stroke-width="3"/>
+      <circle cx="50" cy="32" r="5" stroke="#FBBF24" stroke-width="2.5"/>
+      <path d="M30 51 L50 34 L70 51 Z" fill="#0D9488" stroke="#FDE68A" stroke-width="2"/>
+      <rect x="26" y="51" width="48" height="72" rx="12" fill="url(#lanternGrad2)" stroke="#FBBF24" stroke-width="3"/>
+      <path d="M38 61 Q50 51 62 61 L62 113 Q50 120 38 113 Z" fill="#FEF3C7" opacity="0.85"/>
+      <path d="M26 123 L74 123 L62 141 L38 141 Z" fill="#0F766E" stroke="#FBBF24" stroke-width="2"/>
+      <circle cx="50" cy="149" r="5" fill="#FBBF24"/>
+      <defs>
+        <linearGradient id="lanternGrad2" x1="50" y1="51" x2="50" y2="123" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#06B6D4"/>
+          <stop offset="0.55" stop-color="#10B981"/>
+          <stop offset="1" stop-color="#FDE047"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- الحاوية الرئيسية للتطبيق -->
+  <div class="relative z-20 max-w-4xl mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col justify-between">
+
+    <!-- الشريط العلوي (النقاط، الجوائز، الصوت) -->
+    <header class="flex flex-wrap items-center justify-between gap-3 bg-royal-900/80 backdrop-blur-md border border-amber-400/30 rounded-2xl px-4 py-3 shadow-xl">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-md">
+          ۞
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-extrabold text-amber-300 leading-tight">فوانيس الإتقان</h1>
+          <p class="text-xs text-slate-300">متشابهات سورة النساء (دليل المتقنين)</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- عداد النقاط -->
+        <div class="flex items-center gap-1.5 bg-royal-950/90 border border-amber-400/40 px-3 py-1.5 rounded-xl">
+          <span class="text-amber-400 text-lg">⭐</span>
+          <span id="scoreDisplay" class="font-extrabold text-amber-300 text-sm sm:text-base">0</span>
+          <span class="text-xs text-slate-400 hidden sm:inline">نقطة</span>
+        </div>
+
+        <!-- زر صندوق الجوائز -->
+        <button onclick="openTrophyModal()" class="flex items-center gap-1.5 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 hover:from-amber-500/30 hover:to-yellow-500/30 border border-amber-400/50 px-3 py-1.5 rounded-xl transition active:scale-95">
+          <span class="text-lg">🏆</span>
+          <span class="text-xs sm:text-sm font-bold text-amber-200">الجوائز (<span id="prizeCountBadge">0</span>/4)</span>
+        </button>
+
+        <!-- زر كتم/تشغيل الصوت -->
+        <button id="soundToggleBtn" onclick="toggleSound()" title="تشغيل / كتم الصوت" class="w-9 h-9 rounded-xl bg-royal-800 hover:bg-royal-700 border border-slate-600 flex items-center justify-center text-lg transition active:scale-95">
+          🔊
+        </button>
+      </div>
+    </header>
+
+    <!-- الشاشة 1: شاشة البداية الترحيبية -->
+    <main id="startScreen" class="my-auto py-6">
+      <div class="bg-royal-900/85 backdrop-blur-md border-2 border-amber-400/40 rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden">
+        <div class="inline-block px-4 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-bold mb-4">
+          📖 مستوحى من كتاب: دليل المتقنين في متشابه الكتاب المبين
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-l from-amber-200 via-yellow-400 to-amber-500 mb-4 leading-snug">
+          رحلة فوانيس سورة النساء
+        </h2>
+
+        <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          لعبة تفاعلية ممتعة للكبار والصغار لتثبيت <span class="text-amber-300 font-bold">الثنائيات والثلاثيات والرباعيات والخماسيات</span> في سورة النساء مع نفسها ومع غيرها من سور القرآن الكريم!
+        </p>
+
+        <!-- عرض المراحل والجوائز الأربع -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 text-right">
+          <div class="bg-royal-950/70 border border-teal-400/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">🏮</span>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300">المرحلة 1</span>
+            </div>
+            <h3 class="font-extrabold text-amber-200 text-base">فوانيس الثنائيات</h3>
+            <p class="text-xs text-slate-400 mt-1">متشابهات سورة النساء مع نفسها (موضعان)</p>
+          </div>
+
+          <div class="bg-royal-950/70 border border-sky-400/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">👑</span>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300">المرحلة 2</span>
+            </div>
+            <h3 class="font-extrabold text-amber-200 text-base">فوانيس الثلاثيات</h3>
+            <p class="text-xs text-slate-400 mt-1">المواضع الثلاثية في النساء ومع غيرها</p>
+          </div>
+
+          <div class="bg-royal-950/70 border border-purple-400/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">🛡️</span>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300">المرحلة 3</span>
+            </div>
+            <h3 class="font-extrabold text-amber-200 text-base">فوانيس الرباعيات</h3>
+            <p class="text-xs text-slate-400 mt-1">ضبط المواضع الرباعية الدقيقة</p>
+          </div>
+
+          <div class="bg-royal-950/70 border border-amber-400/30 rounded-2xl p-4 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">💎</span>
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300">المرحلة 4</span>
+            </div>
+            <h3 class="font-extrabold text-amber-200 text-base">الخماسيات فأكثر</h3>
+            <p class="text-xs text-slate-400 mt-1">التحدي الأكبر لنيل تاج الإتقان</p>
+          </div>
+        </div>
+
+        <!-- إدخال اسم المتسابق (اختياري) وزر البدء -->
+        <div class="max-w-md mx-auto space-y-4">
+          <input id="playerNameInput" type="text" placeholder="اكتب اسمك هنا لتُكتب على شهادة الإتقان (اختياري)" class="w-full px-4 py-3 rounded-2xl bg-royal-950/90 border border-amber-400/40 text-center text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition" />
+          
+          <button onclick="startGame()" class="w-full py-4 px-8 rounded-2xl bg-gradient-to-l from-amber-400 via-yellow-500 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-black text-xl shadow-lg shadow-amber-500/25 transform hover:-translate-y-0.5 active:translate-y-0 transition cursor-pointer">
+            ✨ ابدأ رحلة الإتقان الآن ✨
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- الشاشة 2: شاشة اللعب والأسئلة -->
+    <main id="gameScreen" class="hidden my-auto py-4 space-y-4">
+      <!-- شريط المراحل الأربعة (الفوانيس التفاعلية) -->
+      <div class="bg-royal-900/80 border border-slate-700/80 rounded-2xl p-3 sm:p-4">
+        <div class="flex items-center justify-between text-xs sm:text-sm mb-2">
+          <span id="stageTitleBadge" class="font-extrabold text-amber-300">المرحلة الأولى: فوانيس الثنائيات</span>
+          <span id="questionCounterText" class="text-slate-300 font-bold">السؤال 1 من 20</span>
+        </div>
+
+        <!-- فوانيس التقدم الخمسة داخل المرحلة الحالية -->
+        <div class="flex items-center justify-between gap-2 bg-royal-950/80 rounded-xl p-2.5 border border-slate-800">
+          <span class="text-xs text-slate-400 font-semibold">فوانيس المرحلة:</span>
+          <div id="stageLanternsBar" class="flex items-center gap-2 sm:gap-4">
+            <!-- يتم توليد الفوانيس الخمسة ديناميكياً -->
+          </div>
+          <div id="streakBadge" class="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+            🔥 تتابع: 0
+          </div>
+        </div>
+      </div>
+
+      <!-- بطاقة السؤال الرئيسية -->
+      <div id="questionCard" class="bg-royal-900/90 backdrop-blur-md border-2 border-amber-400/35 rounded-3xl p-5 sm:p-8 shadow-2xl transition-all">
+        <!-- تصنيف السؤال من الكتاب -->
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span id="questionCategoryTag" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-200 border border-indigo-400/30">
+            📌 الثنائيات في سورة النساء
+          </span>
+          <span id="questionPointsTag" class="text-xs font-bold text-amber-400">+100 نقطة</span>
+        </div>
+
+        <!-- نص السؤال -->
+        <h2 id="questionPrompt" class="text-lg sm:text-2xl font-extrabold text-white mb-4 leading-relaxed">
+          <!-- نص السؤال هنا -->
+        </h2>
+
+        <!-- صندوق الآية الكريمة أو موضع المتشابه -->
+        <div id="verseBox" class="bg-gradient-to-br from-royal-950 to-slate-900 border border-amber-400/30 rounded-2xl p-4 sm:p-5 mb-6 text-center shadow-inner">
+          <p id="verseDisplay" class="quran-text text-xl sm:text-2xl text-amber-200 font-bold">
+            <!-- الآية هنا -->
+          </p>
+        </div>
+
+        <!-- خيارات الإجابة -->
+        <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <!-- الأزرار الأربعة تُضاف هنا -->
+        </div>
+
+        <!-- صندوق التغذية الراجعة الفورية (يظهر عند الإجابة الصحيحة أو الخاطئة) -->
+        <div id="feedbackBanner" class="hidden mt-6 rounded-2xl p-4 sm:p-5 border-2 transition-all">
+          <div class="flex items-start gap-3">
+            <div id="feedbackIcon" class="text-3xl shrink-0 mt-0.5">✅</div>
+            <div class="flex-1">
+              <h3 id="feedbackTitle" class="font-black text-lg mb-1">أحسنت! إجابة صحيحة</h3>
+              <p id="feedbackExplanation" class="text-sm sm:text-base leading-relaxed text-slate-100"></p>
+              <div id="feedbackRuleBox" class="mt-3 p-3 rounded-xl bg-black/25 border border-white/10 text-xs sm:text-sm quran-text text-amber-200"></div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex justify-end">
+            <button id="nextQuestionBtn" onclick="nextQuestion()" class="px-6 py-3 rounded-xl bg-gradient-to-l from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-slate-950 font-black text-base shadow-md transition active:scale-95 cursor-pointer">
+              السؤال التالي ⬅️
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- الشاشة 3: الشاشة الختامية وشهادة الإتقان -->
+    <main id="endScreen" class="hidden my-auto py-6">
+      <div class="bg-royal-900/90 backdrop-blur-md border-2 border-amber-400/50 rounded-3xl p-6 sm:p-10 text-center shadow-2xl">
+        <div class="text-6xl mb-3 animate-bounce">👑</div>
+        <h2 class="text-2xl sm:text-4xl font-black text-amber-300 mb-2">
+          مبارك إتمام الرحلة يا <span id="finalPlayerName" class="underline decoration-amber-400">حافظ القرآن</span>!
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mb-6">
+          لقد أتممت تحدي متشابهات سورة النساء من كتاب «دليل المتقنين في متشابه الكتاب المبين»
+        </p>
+
+        <!-- بطاقات الإحصائيات -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-xl mx-auto mb-8">
+          <div class="bg-royal-950/90 border border-amber-400/30 rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-1">مجموع النقاط</div>
+            <div id="finalScore" class="text-2xl sm:text-3xl font-black text-amber-400">0</div>
+          </div>
+          <div class="bg-royal-950/90 border border-emerald-400/30 rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-1">الإجابات الصحيحة</div>
+            <div id="finalCorrect" class="text-2xl sm:text-3xl font-black text-emerald-400">0/20</div>
+          </div>
+          <div class="bg-royal-950/90 border border-sky-400/30 rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-1">نسبة الإتقان</div>
+            <div id="finalAccuracy" class="text-2xl sm:text-3xl font-black text-sky-400">0%</div>
+          </div>
+        </div>
+
+        <!-- عرض الجوائز المكتسبة -->
+        <h3 class="font-extrabold text-lg text-amber-200 mb-4">🏆 أوسمتك وجوائزك المكتسبة</h3>
+        <div id="finalPrizesGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <!-- الجوائز تُعرض هنا -->
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <button onclick="restartGame()" class="px-8 py-3.5 rounded-2xl bg-gradient-to-l from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-black text-lg shadow-lg transition active:scale-95 cursor-pointer">
+            🔄 العب مرة أخرى لتثبيت الحفظ
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="text-center text-xs text-slate-400 py-3">
+      المادة العلمية مستخرجة من «دليل المتقنين في متشابه الكتاب المبين» — إعداد أ. جيهان سيد إبراهيم
+    </footer>
+  </div>
+
+  <!-- نافذة احتفالية عند فتح جائزة مرحلة جديدة -->
+  <div id="prizeUnlockModal" class="hidden fixed inset-0 z-40 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-gradient-to-b from-royal-800 to-royal-950 border-2 border-amber-400 rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl animate-prize">
+      <div class="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold mb-3">
+        🎉 جائزة إتمام المرحلة 🎉
+      </div>
+      <div id="unlockedPrizeIcon" class="text-7xl my-4">🏮</div>
+      <h3 id="unlockedPrizeTitle" class="text-2xl font-black text-amber-300 mb-2">فانوس البدايات المضيء</h3>
+      <p id="unlockedPrizeDesc" class="text-slate-200 text-sm sm:text-base mb-6 leading-relaxed">
+        أحسنت! لقد أتقنت متشابهات الثنائيات في سورة النساء وأضأت جميع فوانيس المرحلة الأولى.
+      </p>
+      <button onclick="closePrizeUnlockModal()" class="w-full py-3.5 rounded-2xl bg-gradient-to-l from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-black text-lg shadow-lg transition cursor-pointer">
+        متابعة الرحلة 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- نافذة صندوق الجوائز (يمكن فتحها في أي وقت) -->
+  <div id="trophyChestModal" class="hidden fixed inset-0 z-40 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-royal-900 border-2 border-amber-400/50 rounded-3xl max-w-lg w-full p-6 text-center shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-black text-amber-300">🏆 صندوق الجوائز والأوسمة</h3>
+        <button onclick="closeTrophyModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold">✕</button>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-300 mb-5">أكمل كل مرحلة من المراحل الأربع لفتح الوسام الخاص بها!</p>
+      <div id="chestPrizesList" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-right mb-5">
+        <!-- قائمة الجوائز -->
+      </div>
+      <button onclick="closeTrophyModal()" class="px-6 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-sm hover:bg-amber-300 transition">
+        إغلاق
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. نظام المؤثرات الصوتية المدمج (Web Audio API) بدون روابط خارجية
+    // =========================================================================
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundToggleBtn').textContent = soundEnabled ? '🔊' : '🔇';
+    }
+
+    // صوت الإجابة الصحيحة (نغمة مبهجة)
+    function playCorrectSound() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+          gain.gain.setValueAtTime(0.18, now + idx * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.35);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.36);
+        });
+      } catch (e) {}
+    }
+
+    // صوت الإجابة الخاطئة (تنبيه لطيف وواضح)
+    function playWrongSound() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        const notes = [260, 210];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.14);
+          gain.gain.setValueAtTime(0.14, now + idx * 0.14);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.14 + 0.28);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.14);
+          osc.stop(now + idx * 0.14 + 0.3);
+        });
+      } catch (e) {}
+    }
+
+    // صوت الفوز بجائزة المرحلة
+    function playPrizeFanfare() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+        const melody = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
+        const times = [0, 0.1, 0.2, 0.32, 0.48, 0.6];
+        melody.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + times[i]);
+          gain.gain.setValueAtTime(0.22, now + times[i]);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + times[i] + 0.45);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + times[i]);
+          osc.stop(now + times[i] + 0.46);
+        });
+      } catch (e) {}
+    }
+
+    // =========================================================================
+    // 2. بيانات المراحل والجوائز والأسئلة المستخرجة بدقة من الملفات المرفقة
+    // =========================================================================
+    const PRIZES = [
+      {
+        id: 0,
+        stageName: "المرحلة الأولى: فوانيس الثنائيات",
+        icon: "🏮",
+        title: "فانوس البدايات المضيء",
+        badge: "وسام إتقان الثنائيات",
+        description: "أحسنت! أتقنت ثنائيات سورة النساء مع نفسها وميّزت بين خواتيمها وبداياتها بدقة."
+      },
+      {
+        id: 1,
+        stageName: "المرحلة الثانية: فوانيس الثلاثيات",
+        icon: "👑",
+        title: "تاج التثبيت الذهبي",
+        badge: "وسام إتقان الثلاثيات",
+        description: "رائع! ضبطت المواضع الثلاثية في سورة النساء وما يماثلها في البقرة وآل عمران والأحزاب والجمعة."
+      },
+      {
+        id: 2,
+        stageName: "المرحلة الثالثة: فوانيس الرباعيات",
+        icon: "🛡️",
+        title: "درع الحافظ المتقن",
+        badge: "وسام إتقان الرباعيات",
+        description: "ممتاز! لم تلتبس عليك المواضع الرباعية مثل «عذابًا أليمًا» و«ضلالًا بعيدًا» و«ها أنتم»."
+      },
+      {
+        id: 3,
+        stageName: "المرحلة الرابعة: فوانيس الخماسيات فأكثر",
+        icon: "💎",
+        title: "التاج الملكي للمتقنين",
+        badge: "جائزة الختام الكبرى",
+        description: "هنيئًا لك! أتممت أصعب المراحل وأثبتّ إتقانك للخماسيات فأكثر في سورة النساء."
+      }
+    ];
+
+    const QUESTIONS = [
+      // ==================== المرحلة الأولى: الثنائيات (5 أسئلة) ====================
+      {
+        stage: 0,
+        category: "الثنائيات في سورة النساء (وآتوا...)",
+        prompt: "بدأت آيتان في مطلع سورة النساء بلفظ «وَآتُوا...»، فما هما الموضعان الصحيحان؟",
+        verse: "﴿ وَآتُوا ....... أَمْوَالَهُمْ ﴾  و  ﴿ وَآتُوا ....... صَدُقَاتِهِنَّ نِحْلَةً ﴾",
+        options: [
+          "الْيَتَامَى (آية 2) — النِّسَاءَ (آية 4)",
+          "السُّفَهَاءَ (آية 5) — الْيَتَامَى (آية 2)",
+          "النِّسَاءَ (آية 4) — الْأَقْرَبِينَ (آية 7)",
+          "الْيَتَامَى (آية 2) — الْمَسَاكِينَ (آية 8)"
+        ],
+        correctIndex: 0,
+        explanation: "وردت «وَآتُوا» في بداية آيتين فقط في سورة النساء: آية (2) «وَآتُوا الْيَتَامَى أَمْوَالَهُمْ» وآية (4) «وَآتُوا النِّسَاءَ صَدُقَاتِهِنَّ نِحْلَةً»، أما في آية (5) فجاءت بالنهي «وَلَا تُؤْتُوا السُّفَهَاءَ».",
+        rule: "الضابط من الدليل: آيتا (2) و (4) في النساء تبدآن بـ «وَآتُوا الْيَتَامَى» ثم «وَآتُوا النِّسَاءَ»."
+      },
+      {
+        stage: 0,
+        category: "الثنائيات (وقولوا لهم قولًا معروفًا)",
+        prompt: "وردت عبارة «وَقُولُوا لَهُمْ قَوْلًا مَعْرُوفًا» مرتين في سورة النساء، بينما وردت في سورة الأحزاب بلفظ مختلف، ما هو؟",
+        verse: "﴿ فَلَا تَخْضَعْنَ بِالْقَوْلِ فَيَطْمَعَ الَّذِي فِي قَلْبِهِ مَرَضٌ ........... ﴾ (الأحزاب: 32)",
+        options: [
+          "وَقُلْنَ قَوْلًا مَعْرُوفًا",
+          "وَقُولُوا لَهُمْ قَوْلًا مَعْرُوفًا",
+          "وَقُلْنَ قَوْلًا سَدِيدًا",
+          "وَقُولُوا قَوْلًا كَرِيمًا"
+        ],
+        correctIndex: 0,
+        explanation: "في سورة النساء وردت مرتين: «وَقُولُوا لَهُمْ قَوْلًا مَعْرُوفًا» (آية 5 و آية 8)، أما في سورة الأحزاب آية (32) فجاءت لنساء النبي ﷺ في وسط الآية: «وَقُلْنَ قَوْلًا مَعْرُوفًا».",
+        rule: "تنبيه الدليل: في النساء (5، 8) «وَقُولُوا لَهُمْ قَوْلًا مَعْرُوفًا»، وفي الأحزاب (32) «وَقُلْنَ قَوْلًا مَعْرُوفًا»."
+      },
+      {
+        stage: 0,
+        category: "الثنائيات (ولا يظلمون فتيلًا / ولا تظلمون فتيلًا)",
+        prompt: "ما الفرق الدقيق في ختام آية (49) وآية (77) من سورة النساء؟",
+        verse: "آية 49: ﴿ بَلِ اللَّهُ يُزَكِّي مَنْ يَشَاءُ ........... ﴾ | آية 77: ﴿ وَالْآخِرَةُ خَيْرٌ لِمَنِ اتَّقَى ........... ﴾",
+        options: [
+          "آية 49 بالياء (وَلَا يُظْلَمُونَ فَتِيلًا) — آية 77 بالتاء (وَلَا تُظْلَمُونَ فَتِيلًا)",
+          "كلاهما بالياء (وَلَا يُظْلَمُونَ فَتِيلًا)",
+          "آية 49 (نَقِيرًا) — آية 77 (فَتِيلًا)",
+          "آية 49 بالتاء (وَلَا تُظْلَمُونَ) — آية 77 بالياء (وَلَا يُظْلَمُونَ)"
+        ],
+        correctIndex: 0,
+        explanation: "«وَلَا يُظْلَمُونَ فَتِيلًا» بالياء وردت مرتين في القرآن (النساء: 49 والإسراء: 71)، بينما «وَلَا تُظْلَمُونَ فَتِيلًا» بالتاء وردت مرة واحدة في (النساء: 77)، أما (نَقِيرًا) ففي (النساء: 124).",
+        rule: "ضابط الدليل: بالياء مرتان (النساء 49، الإسراء 71)، وبالتاء موضع واحد (النساء 77)."
+      },
+      {
+        stage: 0,
+        category: "الثنائيات (فلا يؤمنون إلا قليلًا)",
+        prompt: "ختام الآية ﴿ ... بِكُفْرِهِمْ فَلَا يُؤْمِنُونَ إِلَّا قَلِيلًا ﴾ كم مرة ورد في القرآن الكريم وأين؟",
+        verse: "﴿ وَلَكِنْ لَعَنَهُمُ اللَّهُ بِكُفْرِهِمْ فَلَا يُؤْمِنُونَ إِلَّا قَلِيلًا ﴾",
+        options: [
+          "مرتان في القرآن وكلاهما في سورة النساء (آية 46 وآية 155)",
+          "ثلاث مرات: في البقرة والنساء والمائدة",
+          "مرة واحدة في سورة النساء فقط (آية 46)",
+          "مرتان: في سورة النساء (46) وسورة المائدة (13)"
+        ],
+        correctIndex: 0,
+        explanation: "«فَلَا يُؤْمِنُونَ إِلَّا قَلِيلًا» ثنائية خاصة بسورة النساء فقط؛ وردت في آية (46) «وَلَكِنْ لَعَنَهُمُ اللَّهُ بِكُفْرِهِمْ...» وفي آية (155) «بَلْ طَبَعَ اللَّهُ عَلَيْهَا بِكُفْرِهِمْ...».",
+        rule: "من دليل المتقنين: «فَلَا يُؤْمِنُونَ إِلَّا قَلِيلًا» وردت مرتين في القرآن كله (في سورة النساء فقط: 46 و 155)."
+      },
+      {
+        stage: 0,
+        category: "الثنائيات (ويستفتونك / يستفتونك)",
+        prompt: "بدأت آيتان في سورة النساء بالاستفتاء (127 و 176)، فما الفرق بين بدايتيهما؟",
+        verse: "آية 127: ﴿ ....... فِي النِّسَاءِ قُلِ اللَّهُ يُفْتِيكُمْ فِيهِنَّ ﴾ | آية 176: ﴿ ....... قُلِ اللَّهُ يُفْتِيكُمْ فِي الْكَلَالَةِ ﴾",
+        options: [
+          "آية 127 بالواو (وَيَسْتَفْتُونَكَ) — آية 176 بدون واو (يَسْتَفْتُونَكَ)",
+          "كلاهما بالواو (وَيَسْتَفْتُونَكَ)",
+          "آية 127 بدون واو (يَسْتَفْتُونَكَ) — آية 176 بالواو (وَيَسْتَفْتُونَكَ)",
+          "كلاهما بدون واو (يَسْتَفْتُونَكَ)"
+        ],
+        correctIndex: 0,
+        explanation: "في منتصف السورة آية (127) جاءت بالواو: «وَيَسْتَفْتُونَكَ فِي النِّسَاءِ»، أما في ختام السورة آية (176) فجاءت بدون واو: «يَسْتَفْتُونَكَ قُلِ اللَّهُ يُفْتِيكُمْ فِي الْكَلَالَةِ».",
+        rule: "ضابط الثنائيات: آية 127 «وَيَسْتَفْتُونَكَ فِي النِّسَاءِ»، وآية 176 «يَسْتَفْتُونَكَ قُلِ اللَّهُ يُفْتِيكُمْ فِي الْكَلَالَةِ»."
+      },
+
+      // ==================== المرحلة الثانية: الثلاثيات (5 أسئلة) ====================
+      {
+        stage: 1,
+        category: "الثلاثيات في سورة النساء (يا أيها الناس)",
+        prompt: "نداء ﴿ يَا أَيُّهَا النَّاسُ ﴾ ورد في سورة النساء في 3 مواضع فقط، أي الآيات التالية ليست منها؟",
+        verse: "مواضع نداء ﴿ يَا أَيُّهَا النَّاسُ ﴾ الثلاثة في سورة النساء",
+        options: [
+          "﴿ يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ ﴾",
+          "﴿ يَا أَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ مِنْ نَفْسٍ وَاحِدَةٍ ﴾ (آية 1)",
+          "﴿ يَا أَيُّهَا النَّاسُ قَدْ جَاءَكُمُ الرَّسُولُ بِالْحَقِّ مِنْ رَبِّكُمْ ﴾ (آية 170)",
+          "﴿ يَا أَيُّهَا النَّاسُ قَدْ جَاءَكُمْ بُرْهَانٌ مِنْ رَبِّكُمْ ﴾ (آية 174)"
+        ],
+        correctIndex: 0,
+        explanation: "«يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ» هي أول نداء في سورة البقرة (آية 21)! أما ثلاثيات سورة النساء فهي: آية (1) «اتَّقُوا رَبَّكُمُ»، وآية (170) «قَدْ جَاءَكُمُ الرَّسُولُ»، وآية (174) «قَدْ جَاءَكُمْ بُرْهَانٌ».",
+        rule: "ثلاثيات سورة النساء: آية (1) «اتقوا ربكم»، آية (170) «قد جاءكم الرسول»، آية (174) «قد جاءكم برهان»."
+      },
+      {
+        stage: 1,
+        category: "الثلاثيات (وكفى بالله وكيلًا)",
+        prompt: "ختام الآية ﴿ ... وَكَفَى بِاللَّهِ وَكِيلًا ﴾ ورد 3 مرات في سورة النساء، أي المواضع التالية صحيح؟",
+        verse: "﴿ ... فَأَعْرِضْ عَنْهُمْ وَتَوَكَّلْ عَلَى اللَّهِ وَكَفَى بِاللَّهِ وَكِيلًا ﴾",
+        options: [
+          "الآيات (81) و (132) و (171) من سورة النساء",
+          "الآيات (45) و (79) و (166) من سورة النساء",
+          "الآيات (1) و (70) و (135) من سورة النساء",
+          "الآيات (32) و (81) و (158) من سورة النساء"
+        ],
+        correctIndex: 0,
+        explanation: "وردت «وَكَفَى بِاللَّهِ وَكِيلًا» في سورة النساء 3 مرات: آية (81) «وَتَوَكَّلْ عَلَى اللَّهِ وَكَفَى بِاللَّهِ وَكِيلًا»، وآية (132) وآية (171) «لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ وَكَفَى بِاللَّهِ وَكِيلًا». (أما آية 45 فـ «نصيرًا»، وآيتا 79 و166 فـ «شهيدًا»).",
+        rule: "ضابط الثلاثيات: «وَكَفَى بِاللَّهِ وَكِيلًا» في النساء (81، 132، 171)."
+      },
+      {
+        stage: 1,
+        category: "الثلاثيات مع غيرها (أزواج مطهرة)",
+        prompt: "وردت عبارة ﴿ أَزْوَاجٌ مُطَهَّرَةٌ ﴾ في ثلاث سور بالقرآن الكريم: البقرة (25) وآل عمران (15) والنساء (57). فبماذا خُتمت آية سورة النساء (57)؟",
+        verse: "﴿ وَالَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ سَنُدْخِلُهُمْ جَنَّاتٍ تَجْرِي مِنْ تَحْتِهَا الْأَنْهَارُ خَالِدِينَ فِيهَا أَبَدًا لَهُمْ فِيهَا أَزْوَاجٌ مُطَهَّرَةٌ ........... ﴾",
+        options: [
+          "وَنُدْخِلُهُمْ ظِلًّا ظَلِيلًا",
+          "وَهُمْ فِيهَا خَالِدُونَ",
+          "وَرِضْوَانٌ مِنَ اللَّهِ وَاللَّهُ بَصِيرٌ بِالْعِبَادِ",
+          "وَعْدَ اللَّهِ حَقًّا وَمَنْ أَصْدَقُ مِنَ اللَّهِ قِيلًا"
+        ],
+        correctIndex: 0,
+        explanation: "في البقرة (25): «وَهُمْ فِيهَا خَالِدُونَ»، وفي آل عمران (15): «وَأَزْوَاجٌ مُطَهَّرَةٌ وَرِضْوَانٌ مِنَ اللَّهِ»، أما في النساء (57) فخُتمت بـ «وَنُدْخِلُهُمْ ظِلًّا ظَلِيلًا».",
+        rule: "مقارنة الثلاثيات: البقرة (وهم فيها خالدون) | آل عمران (ورضوان من الله) | النساء 57 (وندخلهم ظلًا ظليلًا)."
+      },
+      {
+        stage: 1,
+        category: "الثلاثيات مع غيرها (فإذا قضيتم / قضيت)",
+        prompt: "كيف جاءت بداية الآية (103) في سورة النساء مقارنة بسورة الجمعة وسورة البقرة؟",
+        verse: "﴿ ........... فَاذْكُرُوا اللَّهَ قِيَامًا وَقُعُودًا وَعَلَى جُنُوبِكُمْ ﴾ (النساء: 103)",
+        options: [
+          "فَإِذَا قَضَيْتُمُ الصَّلَاةَ",
+          "فَإِذَا قُضِيَتِ الصَّلَاةُ",
+          "فَإِذَا قَضَيْتُمْ مَنَاسِكَكُمْ",
+          "وَإِذَا قَضَيْتُمُ الصَّلَاةَ"
+        ],
+        correctIndex: 0,
+        explanation: "ثلاثية بديعة: في البقرة (200) «فَإِذَا قَضَيْتُمْ مَنَاسِكَكُمْ»، وفي النساء (103) «فَإِذَا قَضَيْتُمُ الصَّلَاةَ» (بصيغة المخاطب)، وفي الجمعة (10) «فَإِذَا قُضِيَتِ الصَّلَاةُ» (مبني للمجهول).",
+        rule: "ضابط الثلاثيات: البقرة (قضيتم مناسككم) | النساء 103 (قضيتم الصلاة) | الجمعة 10 (قضيت الصلاة)."
+      },
+      {
+        stage: 1,
+        category: "الثلاثيات مع غيرها (إن تبدوا...)",
+        prompt: "وردت «إِنْ تُبْدُوا...» في ثلاث سور: البقرة (271) والنساء (149) والأحزاب (54). فما نص آية سورة النساء (149)؟",
+        verse: "سورة النساء (آية 149): ﴿ إِنْ تُبْدُوا ........... ﴾",
+        options: [
+          "خَيْرًا أَوْ تُخْفُوهُ أَوْ تَعْفُوا عَنْ سُوءٍ فَإِنَّ اللَّهَ كَانَ عَفُوًّا قَدِيرًا",
+          "الصَّدَقَاتِ فَنِعِمَّا هِيَ وَإِنْ تُخْفُوهَا وَتُؤْتُوهَا الْفُقَرَاءَ",
+          "شَيْئًا أَوْ تُخْفُوهُ فَإِنَّ اللَّهَ كَانَ بِكُلِّ شَيْءٍ عَلِيمًا",
+          "مَا فِي أَنْفُسِكُمْ أَوْ تُخْفُوهُ يُحَاسِبْكُمْ بِهِ اللَّهُ"
+        ],
+        correctIndex: 0,
+        explanation: "ثلاثية «إِنْ تُبْدُوا»: في البقرة (271) «إِنْ تُبْدُوا الصَّدَقَاتِ»، وفي النساء (149) «إِنْ تُبْدُوا خَيْرًا أَوْ تُخْفُوهُ أَوْ تَعْفُوا عَنْ سُوءٍ»، وفي الأحزاب (54) «إِنْ تُبْدُوا شَيْئًا أَوْ تُخْفُوهُ».",
+        rule: "ضابط الثلاثيات: البقرة (الصدقات) | النساء 149 (خيرًا أو تخفوه أو تعفوا) | الأحزاب 54 (شيئًا أو تخفوه)."
+      },
+
+      // ==================== المرحلة الثالثة: الرباعيات (5 أسئلة) ====================
+      {
+        stage: 2,
+        category: "الرباعيات في سورة النساء (عذابًا أليمًا)",
+        prompt: "وردت «عَذَابًا أَلِيمًا» 4 مرات في سورة النساء فقط، وجاءت في أحد المواضع الأربعة في (وسط الآية) لا في آخرها، ما هو هذا الموضع؟",
+        verse: "﴿ ... فَيُعَذِّبُهُمْ عَذَابًا أَلِيمًا وَلَا يَجِدُونَ لَهُمْ مِنْ دُونِ اللَّهِ وَلِيًّا وَلَا نَصِيرًا ﴾",
+        options: [
+          "آية (173) في شأن الذين استنكفوا واستكبروا",
+          "آية (18) في شأن الذين يموتون وهم كفار",
+          "آية (138) «بَشِّرِ الْمُنَافِقِينَ بِأَنَّ لَهُمْ عَذَابًا أَلِيمًا»",
+          "آية (161) في أخذهم الربا وأكلهم أموال الناس"
+        ],
+        correctIndex: 0,
+        explanation: "وردت «عَذَابًا أَلِيمًا» في النساء 4 مرات: في ختام الآيات (18، 138، 161)، ومرة واحدة في وسط الآية (173): «فَيُعَذِّبُهُمْ عَذَابًا أَلِيمًا وَلَا يَجِدُونَ لَهُمْ مِنْ دُونِ اللَّهِ وَلِيًّا وَلَا نَصِيرًا».",
+        rule: "ضابط الرباعيات: «عَذَابًا أَلِيمًا» 4 مرات في النساء (18، 138، 161، 173) منها آية 173 وسط آية."
+      },
+      {
+        stage: 2,
+        category: "الرباعيات (ضلالًا بعيدًا مقابل ضلالًا مبينًا)",
+        prompt: "وردت «ضَلَالًا بَعِيدًا» 4 مرات في سورة النساء فقط (60، 116، 136، 167)، بينما جاءت انفرادة «فَقَدْ ضَلَّ ضَلَالًا مُبِينًا» في سورة:",
+        verse: "﴿ وَمَنْ يَعْصِ اللَّهَ وَرَسُولَهُ فَقَدْ ضَلَّ ضَلَالًا مُبِينًا ﴾",
+        options: [
+          "سورة الأحزاب (آية 36)",
+          "سورة آل عمران (آية 164)",
+          "سورة البقرة (آية 108)",
+          "سورة المائدة (آية 12)"
+        ],
+        correctIndex: 0,
+        explanation: "في سورة النساء تأتي دائمًا «ضَلَالًا بَعِيدًا» (4 مرات: 60، 116، 136، 167)، أما «فَقَدْ ضَلَّ ضَلَالًا مُبِينًا» فهي انفرادة في سورة الأحزاب (آية 36).",
+        rule: "تنبيه مهم في الدليل: النساء 4 مرات (ضلالًا بعيدًا) | الأحزاب 36 انفرادة (فقد ضل ضلالًا مبينًا)."
+      },
+      {
+        stage: 2,
+        category: "الرباعيات مع غيرها (فكيف إذا...)",
+        prompt: "بدأت 4 آيات في القرآن الكريم بـ ﴿ فَكَيْفَ إِذَا... ﴾: في آل عمران (25)، وموضعين في النساء (41، 62)، وموضع رابع في سورة:",
+        verse: "﴿ فَكَيْفَ إِذَا تَوَفَّتْهُمُ الْمَلَائِكَةُ يَضْرِبُونَ وُجُوهَهُمْ وَأَدْبَارَهُمْ ﴾",
+        options: [
+          "سورة محمد (آية 27)",
+          "سورة الأنفال (آية 50)",
+          "سورة التوبة (آية 8)",
+          "سورة الحشر (آية 11)"
+        ],
+        correctIndex: 0,
+        explanation: "رباعية «فَكَيْفَ إِذَا»: آل عمران (25) «جمعناهم ليوم»، النساء (41) «جئنا من كل أمة بشهيد»، النساء (62) «أصابتهم مصيبة»، وسورة محمد (27) «توفتهم الملائكة».",
+        rule: "رباعية «فكيف إذا»: آل عمران (25) | النساء (41 و 62) | محمد (27)."
+      },
+      {
+        stage: 2,
+        category: "الرباعيات مع غيرها (ها أنتم...)",
+        prompt: "ما الفرق الدقيق بين بداية آية النساء (109) وآية آل عمران (119) في رباعية «ها أنتم...»؟",
+        verse: "النساء 109: ﴿ هَا أَنْتُمْ ....... جَادَلْتُمْ عَنْهُمْ ﴾ | آل عمران 119: ﴿ هَا أَنْتُمْ ....... تُحِبُّونَهُمْ ﴾",
+        options: [
+          "النساء 109 (هَؤُلَاءِ جَادَلْتُمْ) — آل عمران 119 بدون هاء (أُولَاءِ تُحِبُّونَهُمْ)",
+          "كلاهما (هَؤُلَاءِ)",
+          "النساء 109 (أُولَاءِ جَادَلْتُمْ) — آل عمران 119 (هَؤُلَاءِ تُحِبُّونَهُمْ)",
+          "كلاهما بدون هاء (أُولَاءِ)"
+        ],
+        correctIndex: 0,
+        explanation: "في الرباعية: تأتي «هَا أَنْتُمْ هَؤُلَاءِ» بالهاء في 3 مواضع (آل عمران 66 حاججتم، النساء 109 جادلتم، محمد 38 تدعون)، وتأتي بدون هاء «هَا أَنْتُمْ أُولَاءِ» في موضع واحد فقط: آل عمران (119) «أُولَاءِ تُحِبُّونَهُمْ».",
+        rule: "ضابط الرباعية: كلها «ها أنتم هؤلاء» إلا آل عمران 119 «ها أنتم أولاء تحبونهم»."
+      },
+      {
+        stage: 2,
+        category: "الرباعيات مع غيرها (ولكل...)",
+        prompt: "توزعت رباعية ﴿ وَلِكُلٍّ... ﴾ على 4 سور: البقرة (148) والنساء (33) والأنعام (132) والأحقاف (19). فكيف جاءت آية سورة النساء (33)؟",
+        verse: "سورة النساء (آية 33): ﴿ وَلِكُلٍّ ........... ﴾",
+        options: [
+          "جَعَلْنَا مَوَالِيَ مِمَّا تَرَكَ الْوَالِدَانِ وَالْأَقْرَبُونَ",
+          "وِجْهَةٌ هُوَ مُوَلِّيهَا فَاسْتَبِقُوا الْخَيْرَاتِ",
+          "دَرَجَاتٌ مِمَّا عَمِلُوا وَمَا رَبُّكَ بِغَافِلٍ عَمَّا يَعْمَلُونَ",
+          "دَرَجَاتٌ مِمَّا عَمِلُوا وَلِيُوَفِّيَهُمْ أَعْمَالَهُمْ"
+        ],
+        correctIndex: 0,
+        explanation: "رباعية «وَلِكُلٍّ»: البقرة (148) «وَلِكُلٍّ وِجْهَةٌ»، النساء (33) «وَلِكُلٍّ جَعَلْنَا مَوَالِيَ»، الأنعام (132) والأحقاف (19) «وَلِكُلٍّ دَرَجَاتٌ مِمَّا عَمِلُوا».",
+        rule: "رباعية «ولكل»: البقرة (وجهة) | النساء 33 (جعلنا موالي) | الأنعام والأحقاف (درجات)."
+      },
+
+      // ==================== المرحلة الرابعة: الخماسيات فأكثر (5 أسئلة) ====================
+      {
+        stage: 3,
+        category: "الخماسيات (وكان الله عليمًا حكيمًا)",
+        prompt: "ورد ختام ﴿ وَكَانَ اللَّهُ عَلِيمًا حَكِيمًا ﴾ 5 مرات في سورة النساء (17، 92، 104، 111، 170) وموضع سادس في سورة الفتح (4). ما الضابط الذي وضعته المعلمة لحفظ مواضع النساء الخمسة؟",
+        verse: "ضابط مواضع ﴿ وَكَانَ اللَّهُ عَلِيمًا حَكِيمًا ﴾ الخمسة في سورة النساء",
+        options: [
+          "من استهان بقتل الناس ولم يتب يكسب إثمًا",
+          "من أنفق ماله في سبيل الله واتقى ربه",
+          "من هاجر في سبيل الله واستغفر ربه",
+          "من أصلح بين الناس وأدى الأمانات"
+        ],
+        correctIndex: 0,
+        explanation: "الضابط الرائع في الدليل: «من استهان بقتل الناس ولم يتب يكسب إثمًا»: (استهان: ولا تهنوا 104) - (بقتل: ومن قتل مؤمنًا خطأ 92) - (الناس: يا أيها الناس 170) - (ولم يتب: إنما التوبة 17) - (يكسب إثمًا: ومن يكسب إثمًا 111).",
+        rule: "ضابط الدليل: «من استهان (104) بقتل (92) الناس (170) ولم يتب (17) يكسب إثمًا (111)»."
+      },
+      {
+        stage: 3,
+        category: "الخماسيات في سورة النساء (ألم تر إلى الذين...)",
+        prompt: "بدأت 5 آيات متتالية في سورة النساء بـ ﴿ أَلَمْ تَرَ إِلَى الَّذِينَ... ﴾ (الآيات: 44، 49، 51، 60، 77). أي الآيات التالية ليست من هذه الخماسية؟",
+        verse: "مواضع ﴿ أَلَمْ تَرَ إِلَى الَّذِينَ... ﴾ الخمسة في سورة النساء",
+        options: [
+          "﴿ أَلَمْ تَرَ إِلَى الَّذِينَ خَرَجُوا مِنْ دِيَارِهِمْ وَهُمْ أُلُوفٌ ﴾",
+          "﴿ أَلَمْ تَرَ إِلَى الَّذِينَ أُوتُوا نَصِيبًا مِنَ الْكِتَابِ يَشْتَرُونَ الضَّلَالَةَ ﴾ (44)",
+          "﴿ أَلَمْ تَرَ إِلَى الَّذِينَ يُزَكُّونَ أَنْفُسَهُمْ ﴾ (49)",
+          "﴿ أَلَمْ تَرَ إِلَى الَّذِينَ قِيلَ لَهُمْ كُفُّوا أَيْدِيَكُمْ ﴾ (77)"
+        ],
+        correctIndex: 0,
+        explanation: "«أَلَمْ تَرَ إِلَى الَّذِينَ خَرَجُوا مِنْ دِيَارِهِمْ وَهُمْ أُلُوفٌ» في سورة البقرة (243)! أما خماسية سورة النساء فهي: (44) يَشْتَرُونَ الضَّلَالَةَ، (49) يُزَكُّونَ أَنْفُسَهُمْ، (51) يُؤْمِنُونَ بِالْجِبْتِ وَالطَّاغُوتِ، (60) يَزْعُمُونَ أَنَّهُمْ آمَنُوا، (77) قِيلَ لَهُمْ كُفُّوا أَيْدِيَكُمْ.",
+        rule: "خماسية «ألم تر» في النساء: آية (44) و (49) و (51) و (60) و (77)."
+      },
+      {
+        stage: 3,
+        category: "الخماسيات مع غيرها (إلا الذين تابوا)",
+        prompt: "وردت ﴿ إِلَّا الَّذِينَ تَابُوا... ﴾ في 5 مواضع: البقرة (160) وآل عمران (89) والنساء (146) والمائدة (34) والنور (5). كيف جاءت في سورة النساء (146)؟",
+        verse: "سورة النساء (آية 146) بعد ذكر المنافقين في الدرك الأسفل من النار:",
+        options: [
+          "إِلَّا الَّذِينَ تَابُوا وَأَصْلَحُوا وَاعْتَصَمُوا بِاللَّهِ وَأَخْلَصُوا دِينَهُمْ لِلَّهِ",
+          "إِلَّا الَّذِينَ تَابُوا وَأَصْلَحُوا وَبَيَّنُوا فَأُولَئِكَ أَتُوبُ عَلَيْهِمْ",
+          "إِلَّا الَّذِينَ تَابُوا مِنْ بَعْدِ ذَلِكَ وَأَصْلَحُوا فَإِنَّ اللَّهَ غَفُورٌ رَحِيمٌ",
+          "إِلَّا الَّذِينَ تَابُوا مِنْ قَبْلِ أَنْ تَقْدِرُوا عَلَيْهِمْ"
+        ],
+        correctIndex: 0,
+        explanation: "في سورة النساء (146) جاءت بأربع صفات: «إِلَّا الَّذِينَ تَابُوا وَأَصْلَحُوا وَاعْتَصَمُوا بِاللَّهِ وَأَخْلَصُوا دِينَهُمْ لِلَّهِ»، بينما البقرة (160) «وَأَصْلَحُوا وَبَيَّنُوا»، وآل عمران (89) والنور (5) «مِنْ بَعْدِ ذَلِكَ وَأَصْلَحُوا»، والمائدة (34) «مِنْ قَبْلِ أَنْ تَقْدِرُوا عَلَيْهِمْ».",
+        rule: "ضابط النساء 146: «تَابُوا وَأَصْلَحُوا وَاعْتَصَمُوا بِاللَّهِ وَأَخْلَصُوا دِينَهُمْ لِلَّهِ»."
+      },
+      {
+        stage: 3,
+        category: "الخماسيات فأكثر (ولله ما في السماوات وما في الأرض)",
+        prompt: "تكررت ﴿ وَلِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ﴾ 3 مرات متقاربة في سورة النساء (126، 131 مرتين، 132)، فما ختام آية (126)؟",
+        verse: "﴿ وَلِلَّهِ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ........... ﴾ (النساء: 126)",
+        options: [
+          "وَكَانَ اللَّهُ بِكُلِّ شَيْءٍ مُحِيطًا",
+          "وَكَانَ اللَّهُ غَنِيًّا حَمِيدًا",
+          "وَكَفَى بِاللَّهِ وَكِيلًا",
+          "وَكَانَ اللَّهُ عَلَى كُلِّ شَيْءٍ قَدِيرًا"
+        ],
+        correctIndex: 0,
+        explanation: "الترتيب في سورة النساء: آية (126) «وَكَانَ اللَّهُ بِكُلِّ شَيْءٍ مُحِيطًا»، ثم في وسط وآخر آية (131) «وَكَانَ اللَّهُ غَنِيًّا حَمِيدًا»، ثم في آية (132) «وَكَفَى بِاللَّهِ وَكِيلًا».",
+        rule: "تسلسل النساء: 126 (بكل شيء محيطًا) ← 131 (غنيًا حميدًا) ← 132 (وكفى بالله وكيلًا)."
+      },
+      {
+        stage: 3,
+        category: "خاتمة الإتقان (حرمت عليكم...)",
+        prompt: "بدأت آيتان في القرآن الكريم بـ ﴿ حُرِّمَتْ عَلَيْكُمْ... ﴾: في سورة النساء (23) وسورة المائدة (3). بمَ خُتمت آية سورة النساء (23)؟",
+        verse: "﴿ ... وَأَنْ تَجْمَعُوا بَيْنَ الْأُخْتَيْنِ إِلَّا مَا قَدْ سَلَفَ ........... ﴾ (النساء: 23)",
+        options: [
+          "إِنَّ اللَّهَ كَانَ غَفُورًا رَحِيمًا (بزيادة كَانَ)",
+          "فَإِنَّ اللَّهَ غَفُورٌ رَحِيمٌ (بدون كَانَ)",
+          "وَكَانَ اللَّهُ غَفُورًا رَحِيمًا",
+          "إِنَّ اللَّهَ عَلِيمٌ حَكِيمٌ"
+        ],
+        correctIndex: 0,
+        explanation: "ختام رائع! في سورة النساء (23): «إِنَّ اللَّهَ كَانَ غَفُورًا رَحِيمًا» (بلفظ كَانَ كما هو غالب فواصل سورة النساء)، أما في سورة المائدة (3): «فَإِنَّ اللَّهَ غَفُورٌ رَحِيمٌ».",
+        rule: "مقارنة الثنائية: النساء 23 «إِنَّ اللَّهَ كَانَ غَفُورًا رَحِيمًا» | المائدة 3 «فَإِنَّ اللَّهَ غَفُورٌ رَحِيمٌ»."
+      }
+    ];
+
+    // =========================================================================
+    // 3. متغيرات حالة اللعبة وإدارتها
+    // =========================================================================
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let correctAnswersCount = 0;
+    let currentStreak = 0;
+    let unlockedPrizes = [];
+    let answeredCurrent = false;
+    let playerName = "";
+
+    function startGame() {
+      initAudio();
+      const inputName = document.getElementById('playerNameInput').value.trim();
+      playerName = inputName || "حافظ القرآن المتقن";
+
+      currentQuestionIndex = 0;
+      score = 0;
+      correctAnswersCount = 0;
+      currentStreak = 0;
+      unlockedPrizes = [];
+      answeredCurrent = false;
+
+      updateHeaderStats();
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('endScreen').classList.add('hidden');
+      document.getElementById('gameScreen').classList.remove('hidden');
+
+      renderQuestion();
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
+    function updateHeaderStats() {
+      document.getElementById('scoreDisplay').textContent = score;
+      document.getElementById('prizeCountBadge').textContent = unlockedPrizes.length;
+      document.getElementById('streakBadge').textContent = `🔥 تتابع: ${currentStreak}`;
+    }
+
+    // رسم فوانيس المرحلة الخمسة (مضيء للسؤال المجاب بنجاح، خافت للباقي)
+    function renderStageLanterns(stageIdx, questionInStageIdx) {
+      const bar = document.getElementById('stageLanternsBar');
+      bar.innerHTML = '';
+
+      for (let i = 0; i < 5; i++) {
+        const globalIdx = stageIdx * 5 + i;
+        const isCurrent = (i === questionInStageIdx);
+        const isPassed = (globalIdx < currentQuestionIndex);
+
+        const lanternEl = document.createElement('div');
+        lanternEl.className = `flex flex-col items-center transition-all duration-300 ${isCurrent ? 'scale-125' : ''}`;
+
+        if (isPassed) {
+          lanternEl.innerHTML = `<span class="text-xl sm:text-2xl lantern-lit" title="مكتمل">🏮</span>`;
+        } else if (isCurrent) {
+          lanternEl.innerHTML = `<span class="text-xl sm:text-2xl animate-pulse" title="السؤال الحالي">✨</span>`;
+        } else {
+          lanternEl.innerHTML = `<span class="text-lg sm:text-xl opacity-35 grayscale" title="قادم">🏮</span>`;
+        }
+        bar.appendChild(lanternEl);
+      }
+    }
+
+    // عرض السؤال الحالي وخياراته
+    function renderQuestion() {
+      answeredCurrent = false;
+      const q = QUESTIONS[currentQuestionIndex];
+      const stageInfo = PRIZES[q.stage];
+      const questionInStage = currentQuestionIndex % 5;
+
+      // تحديث الترويسة والفوانيس
+      document.getElementById('stageTitleBadge').textContent = stageInfo.stageName;
+      document.getElementById('questionCounterText').textContent = `السؤال ${currentQuestionIndex + 1} من ${QUESTIONS.length}`;
+      renderStageLanterns(q.stage, questionInStage);
+
+      // تحديث نصوص السؤال
+      document.getElementById('questionCategoryTag').textContent = `📌 ${q.category}`;
+      document.getElementById('questionPrompt').textContent = q.prompt;
+      document.getElementById('verseDisplay').textContent = q.verse;
+
+      // إخفاء صندوق التغذية الراجعة وإزالة تأثير الاهتزاز
+      const card = document.getElementById('questionCard');
+      card.classList.remove('animate-shake');
+      document.getElementById('feedbackBanner').classList.add('hidden');
+
+      // خلط ترتيب الخيارات عشوائياً مع الاحتفاظ بمعرفة الإجابة الصحيحة
+      const indexedOptions = q.options.map((text, idx) => ({
+        text,
+        isCorrect: idx === q.correctIndex
+      }));
+      shuffleArray(indexedOptions);
+
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+
+      const letters = ['أ', 'ب', 'ج', 'د'];
+      indexedOptions.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.correct = opt.isCorrect ? 'true' : 'false';
+        btn.className = `option-btn group text-right p-4 rounded-2xl bg-royal-950/85 hover:bg-royal-800/90 border-2 border-slate-700 hover:border-amber-400/70 transition-all duration-200 flex items-center gap-3 cursor-pointer active:scale-[0.99]`;
+
+        btn.innerHTML = `
+          <span class="letter-badge w-9 h-9 rounded-xl bg-royal-800 group-hover:bg-amber-400 group-hover:text-slate-950 text-amber-300 font-black flex items-center justify-center shrink-0 transition">
+            ${letters[i]}
+          </span>
+          <span class="quran-text text-lg sm:text-xl font-bold text-slate-100 leading-snug flex-1">
+            ${opt.text}
+          </span>
+          <span class="status-icon text-xl shrink-0"></span>
+        `;
+
+        btn.addEventListener('click', () => handleOptionSelect(btn, opt.isCorrect, q));
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // معالجة اختيار اللاعب (صحيح أو خطأ)
+    function handleOptionSelect(selectedBtn, isCorrect, questionObj) {
+      if (answeredCurrent) return;
+      answeredCurrent = true;
+
+      const allBtns = document.querySelectorAll('.option-btn');
+      allBtns.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-royal-800/90', 'hover:border-amber-400/70');
+      });
+
+      const feedbackBanner = document.getElementById('feedbackBanner');
+      const feedbackIcon = document.getElementById('feedbackIcon');
+      const feedbackTitle = document.getElementById('feedbackTitle');
+      const feedbackExplanation = document.getElementById('feedbackExplanation');
+      const feedbackRuleBox = document.getElementById('feedbackRuleBox');
+      const card = document.getElementById('questionCard');
+
+      if (isCorrect) {
+        // --- حالة الإجابة الصحيحة ---
+        playCorrectSound();
+        currentStreak++;
+        correctAnswersCount++;
+        const bonus = (currentStreak > 1) ? (currentStreak - 1) * 10 : 0;
+        const earned = 100 + bonus;
+        score += earned;
+
+        selectedBtn.classList.remove('bg-royal-950/85', 'border-slate-700');
+        selectedBtn.classList.add('bg-emerald-950/90', 'border-emerald-400', 'shadow-lg', 'shadow-emerald-500/20');
+        selectedBtn.querySelector('.letter-badge').className = 'w-9 h-9 rounded-xl bg-emerald-400 text-slate-950 font-black flex items-center justify-center shrink-0';
+        selectedBtn.querySelector('.status-icon').textContent = '✅';
+
+        feedbackBanner.className = 'mt-6 rounded-2xl p-4 sm:p-5 border-2 bg-emerald-950/80 border-emerald-400/70';
+        feedbackIcon.textContent = '🌟';
+        feedbackTitle.className = 'font-black text-lg mb-1 text-emerald-300';
+        feedbackTitle.textContent = bonus > 0
+          ? `أحسنت! إجابة صحيحة (+${earned} نقطة مع مكافأة التتابع 🔥)`
+          : `أحسنت! إجابة صحيحة (+100 نقطة)`;
+      } else {
+        // --- حالة الإجابة الخاطئة مع إشارة واضحة للخطأ وتصحيحه ---
+        playWrongSound();
+        currentStreak = 0;
+
+        // اهتزاز البطاقة
+        card.classList.add('animate-shake');
+
+        // تلوين الإجابة الخاطئة بالأحمر مع علامة الخطأ
+        selectedBtn.classList.remove('bg-royal-950/85', 'border-slate-700');
+        selectedBtn.classList.add('bg-rose-950/90', 'border-rose-500', 'shadow-lg', 'shadow-rose-500/20');
+        selectedBtn.querySelector('.letter-badge').className = 'w-9 h-9 rounded-xl bg-rose-500 text-white font-black flex items-center justify-center shrink-0';
+        selectedBtn.querySelector('.status-icon').textContent = '❌';
+
+        // إبراز الإجابة الصحيحة بالأخضر ليتعلمها اللاعب فوراً
+        allBtns.forEach(btn => {
+          if (btn.dataset.correct === 'true') {
+            btn.classList.remove('bg-royal-950/85', 'border-slate-700');
+            btn.classList.add('bg-emerald-950/80', 'border-emerald-400');
+            btn.querySelector('.letter-badge').className = 'w-9 h-9 rounded-xl bg-emerald-400 text-slate-950 font-black flex items-center justify-center shrink-0';
+            btn.querySelector('.status-icon').textContent = '✅';
+          }
+        });
+
+        feedbackBanner.className = 'mt-6 rounded-2xl p-4 sm:p-5 border-2 bg-rose-950/85 border-rose-500/80';
+        feedbackIcon.textContent = '⚠️';
+        feedbackTitle.className = 'font-black text-lg mb-1 text-rose-300';
+        feedbackTitle.textContent = 'إجابة خاطئة! انتبه للمتشابه (تم توضيح الصواب بالأخضر):';
+      }
+
+      feedbackExplanation.textContent = questionObj.explanation;
+      feedbackRuleBox.textContent = `💡 ${questionObj.rule}`;
+      feedbackBanner.classList.remove('hidden');
+
+      // تحديث نص زر التالي إذا كان آخر سؤال في المرحلة أو اللعبة
+      const nextBtn = document.getElementById('nextQuestionBtn');
+      if ((currentQuestionIndex + 1) % 5 === 0) {
+        nextBtn.textContent = 'استلم جائزة المرحلة 🏆';
+      } else {
+        nextBtn.textContent = 'السؤال التالي ⬅️';
+      }
+
+      updateHeaderStats();
+    }
+
+    // الانتقال للسؤال التالي أو فتح جائزة المرحلة
+    function nextQuestion() {
+      const completedStageIndex = Math.floor(currentQuestionIndex / 5);
+      const isEndOfStage = ((currentQuestionIndex + 1) % 5 === 0);
+
+      if (isEndOfStage) {
+        // فتح جائزة المرحلة
+        const prize = PRIZES[completedStageIndex];
+        if (!unlockedPrizes.includes(prize.id)) {
+          unlockedPrizes.push(prize.id);
+          updateHeaderStats();
+        }
+        showPrizeUnlockModal(prize);
+      } else {
+        currentQuestionIndex++;
+        renderQuestion();
+      }
+    }
+
+    function showPrizeUnlockModal(prize) {
+      playPrizeFanfare();
+      launchConfetti();
+
+      document.getElementById('unlockedPrizeIcon').textContent = prize.icon;
+      document.getElementById('unlockedPrizeTitle').textContent = `${prize.title} (${prize.badge})`;
+      document.getElementById('unlockedPrizeDesc').textContent = prize.description;
+      document.getElementById('prizeUnlockModal').classList.remove('hidden');
+    }
+
+    function closePrizeUnlockModal() {
+      document.getElementById('prizeUnlockModal').classList.add('hidden');
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex >= QUESTIONS.length) {
+        showEndScreen();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    // عرض الشاشة الختامية
+    function showEndScreen() {
+      playPrizeFanfare();
+      launchConfetti();
+
+      document.getElementById('gameScreen').classList.add('hidden');
+      document.getElementById('endScreen').classList.remove('hidden');
+
+      document.getElementById('finalPlayerName').textContent = playerName;
+      document.getElementById('finalScore').textContent = score;
+      document.getElementById('finalCorrect').textContent = `${correctAnswersCount}/${QUESTIONS.length}`;
+      const accuracy = Math.round((correctAnswersCount / QUESTIONS.length) * 100);
+      document.getElementById('finalAccuracy').textContent = `${accuracy}%`;
+
+      const grid = document.getElementById('finalPrizesGrid');
+      grid.innerHTML = '';
+      PRIZES.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'bg-royal-950/90 border border-amber-400/40 rounded-2xl p-3 flex flex-col items-center text-center';
+        card.innerHTML = `
+          <span class="text-4xl mb-2">${p.icon}</span>
+          <span class="font-extrabold text-xs sm:text-sm text-amber-300">${p.title}</span>
+          <span class="text-[11px] text-slate-400 mt-0.5">${p.badge}</span>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // نافذة صندوق الجوائز
+    function openTrophyModal() {
+      const list = document.getElementById('chestPrizesList');
+      list.innerHTML = '';
+
+      PRIZES.forEach(p => {
+        const isUnlocked = unlockedPrizes.includes(p.id);
+        const item = document.createElement('div');
+        item.className = `p-3.5 rounded-2xl border flex items-center gap-3 ${
+          isUnlocked
+            ? 'bg-amber-500/15 border-amber-400/60 text-white'
+            : 'bg-royal-950/70 border-slate-800 text-slate-500'
+        }`;
+        item.innerHTML = `
+          <span class="text-3xl ${isUnlocked ? '' : 'grayscale opacity-40'}">${p.icon}</span>
+          <div>
+            <div class="font-bold text-sm ${isUnlocked ? 'text-amber-300' : 'text-slate-400'}">
+              ${isUnlocked ? p.title : 'جائزة مغلقة 🔒'}
+            </div>
+            <div class="text-xs text-slate-400">${p.stageName}</div>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+
+      document.getElementById('trophyChestModal').classList.remove('hidden');
+    }
+
+    function closeTrophyModal() {
+      document.getElementById('trophyChestModal').classList.add('hidden');
+    }
+
+    // خوارزمية خلط الخيارات
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // =========================================================================
+    // 4. تأثير القصاصات الذهبية (Confetti) عند الفوز بالجوائز
+    // =========================================================================
+    function launchConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ['#FBBF24', '#34D399', '#38BDF8', '#F472B6', '#FDE047'];
+      const particles = Array.from({ length: 85 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speedY: Math.random() * 3.5 + 2,
+        speedX: Math.random() * 2 - 1,
+        rotation: Math.random() * 360
+      }));
+
+      let frame = 0;
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += 4;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+        });
+        frame++;
+        if (frame < 130) {
+          requestAnimationFrame(animateConfetti);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      animateConfetti();
+    }
+  </script>
+</body>
+</html>
